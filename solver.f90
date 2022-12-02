@@ -31,7 +31,7 @@ SUBROUTINE ICCG2(coef,jcoef,L,Ldiag,b,x,n,m,eps,p,r,r2,q,s,itmax)
 !    LOCAL VARIABLES                                !
 !---------------------------------------------------!
 
-	real*8 :: alpha,beta,nu,mu,norm0,norm,sum,scal,norm1,norm2
+	real*8 :: alpha,beta,nu,mu,norm0,norm,sum,scal,norm1,norm2local
 	integer :: i,j,col
 
 
@@ -96,7 +96,7 @@ SUBROUTINE ICCG2(coef,jcoef,L,Ldiag,b,x,n,m,eps,p,r,r2,q,s,itmax)
 
 	end do
 
-	norm0=norm2(b,n)
+	norm0=norm2local(b,n)
 
 	do i=1,n; s(i)=1./s(i); end do
 
@@ -292,7 +292,7 @@ FUNCTION norm1(x,n) result(res)
 END FUNCTION
 
 
-FUNCTION norm2(x,n) result(res)
+FUNCTION norm2local(x,n) result(res)
 
 	implicit none
 

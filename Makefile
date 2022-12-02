@@ -1,13 +1,13 @@
 # Makefile 
 # Nom du compilateur
-FC = gfortran
+FC = flang-new
 
 # Options de compilation: optimisation, debug etc...
 OPT = -fdefault-real-8 -O3
 # nom de l'executable
 EXE = NS_lid_driven_cavity
 # Options de l'edition de lien..
-LINKOPT = 
+LINKOPT = -v -L/usr/local/opt/llvm/lib -lc++
 
 # Defining the objects (OBJS) variables
 
@@ -72,6 +72,8 @@ cleanall :
 	/bin/rm -f $(OBJS) $(EXE)  *.mod
 	/bin/rm -f *.scl
 	/bin/rm -f *.vec
+	/bin/rm -f *.txt
+	/bin/rm -f EnsightOutput.*
 
 config :
 	if [ ! -d obj ] ; then mkdir obj ; fi
