@@ -1,14 +1,15 @@
 # Makefile 
 # Nom du compilateur
-FC = flang-new
+FC = /usr/local/opt/llvm/bin/flang-new
 
 # Options de compilation: optimisation, debug etc...
 OPT = -fdefault-real-8 -O3
 # nom de l'executable
 EXE = NS_lid_driven_cavity
 # Options de l'edition de lien..
-LINKOPT = -v -L/usr/local/opt/llvm/lib -lc++
-
+#LINKOPT = -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lc++ -Wl,-rpath,/usr/local/opt/llvm/lib/c++
+#LINKOPT = -v -L/usr/local/opt/llvm/lib -lc++
+LINKOPT = -L/usr/local/opt/llvm/lib -fuse-ld=lld -lc++ -v
 # Defining the objects (OBJS) variables
 
 OBJS =  \
